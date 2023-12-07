@@ -144,18 +144,14 @@ func determineHandType(cardMap map[Card]int) HandType {
 
 // true if hand1 is bigger, else false
 func compareHands(hand1, hand2 Hand) bool {
-	if hand1.handType > hand2.handType {
-		return true
-	} else if hand1.handType < hand2.handType {
-		return false
+	if hand1.handType != hand2.handType {
+		return hand1.handType > hand2.handType
 	}
 
 	// hand1.handType == hand2.handType
 	for i := 0; i < 5; i++ {
-		if hand1.cards[i] > hand2.cards[i] {
-			return true
-		} else if hand1.cards[i] < hand2.cards[i] {
-			return false
+		if hand1.cards[i] != hand2.cards[i] {
+			return hand1.cards[i] > hand2.cards[i]
 		}
 	}
 
